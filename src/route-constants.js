@@ -1,14 +1,28 @@
-export const ROOT_COMPONENT_NAME = "RootComponent";
+// ------------------------------------------------------- 登入
+// 登入账号
+export const Login_COMPONENT_NAME = "Login";
+export const Login_COMPONENT_ROUTE = "/Login";
+//注册账号
+export const Register_COMPONENT_NAME = "Register";
+export const Register_COMPONENT_ROUTE = "/Register";
+// ------------------------------------------------------- 小记
+// 恋爱小记
+export const ROOT_COMPONENT_NAME = "LoveNotes";
 export const ROOT_COMPONENT_ROUTE = "/";
-
-export const SECOND_COMPONENT_NAME = "SecondComponent";
-export const SECOND_COMPONENT_ROUTE = "/second-component";
-
-export const THIRD_COMPONENT_NAME = "ThirdComponent";
-export const THIRD_COMPONENT_ROUTE = "/third-component";
-
-export const FOURTH_COMPONENT_NAME = "FourthComponent";
-export const FOURTH_COMPONENT_ROUTE = "/fourth-component";
-
-export const FIFTH_COMPONENT_NAME = "FifthComponent";
-export const FIFTH_COMPONENT_ROUTE = "/fifth-component";
+// 添加小记
+export const AddNote_COMPONENT_NAME = "LoveNotes";
+export const AddNote_COMPONENT_ROUTE = "/LoveNotes";
+// ------------------------------------------------------- 历程
+//恋爱历程
+export const LoveCourse_COMPONENT_NAME = "LoveCourse";
+export const LoveCourse_COMPONENT_ROUTE = "/LoveCourse";
+// 添加历程
+export const AddJourney_COMPONENT_NAME = "AddJourney";
+export const AddJourney_COMPONENT_ROUTE = "/AddJourney";
+// ------------------------------------------------------- 伴侣
+//添加伴侣
+export const AddCompanion_COMPONENT_NAME = "AddCompanion";
+export const AddCompanion_COMPONENT_ROUTE = "/AddCompanion";
+// 伴侣页面
+export const Companion_COMPONENT_NAME = "Companion";
+export const Companion_COMPONENT_ROUTE = "/Companion";
