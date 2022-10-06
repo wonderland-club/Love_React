@@ -1,14 +1,18 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Layout from "./components/Layout";
-import RootComponent from "./pages/RootComponent/RootComponent";
-import SecondComponent from "./pages/SecondComponent/SecondComponent";
-import ThirdComponent from "./pages/ThirdComponent/ThirdComponent";
-import FourthComponent from "./pages/FourthComponent/FourthComponent";
-import FifthComponent from "./pages/FifthComponent/FifthComponent";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Login/Register";
+import LoveNotes from "./pages/Note/LoveNotes";
+import AddNote from "./pages/Note/AddNote";
+import LoveCourse from "./pages/Course/LoveCourse";
+import AddJourney from "./pages/Course/AddJourney";
+import AddCompanion from "./pages/Companion/AddCompanion";
+import Companion from "./pages/Companion/Companion";
 import {
   Login_COMPONENT_ROUTE,
   Register_COMPONENT_ROUTE,
+  LoveNotes_COMPONENT_ROUTE,
   AddNote_COMPONENT_ROUTE,
   LoveCourse_COMPONENT_ROUTE,
   AddJourney_COMPONENT_ROUTE,
@@ -20,21 +24,23 @@ function App() {
   return (
     <Layout>
       <Routes>
+        <Route path={`${Login_COMPONENT_ROUTE}`} element={<Login />} />
+        <Route path={`${Register_COMPONENT_ROUTE}`} element={<Register />} />
+        <Route path={`${LoveNotes_COMPONENT_ROUTE}`} element={<LoveNotes />} />
+        <Route path={`${AddNote_COMPONENT_ROUTE}`} element={<AddNote />} />
         <Route
-          index
-          path={`${ROOT_COMPONENT_ROUTE}`}
-          element={<RootComponent />}
+          path={`${LoveCourse_COMPONENT_ROUTE}`}
+          element={<LoveCourse />}
         />
         <Route
-          path={`${SECOND_COMPONENT_ROUTE}`}
-          element={<SecondComponent />}
+          path={`${AddJourney_COMPONENT_ROUTE}`}
+          element={<AddJourney />}
         />
-        <Route path={`${THIRD_COMPONENT_ROUTE}`} element={<ThirdComponent />} />
         <Route
-          path={`${FOURTH_COMPONENT_ROUTE}`}
-          element={<FourthComponent />}
+          path={`${AddCompanion_COMPONENT_ROUTE}`}
+          element={<AddCompanion />}
         />
-        <Route path={`${FIFTH_COMPONENT_ROUTE}`} element={<FifthComponent />} />
+        <Route path={`${Companion_COMPONENT_ROUTE}`} element={<Companion />} />
       </Routes>
     </Layout>
   );

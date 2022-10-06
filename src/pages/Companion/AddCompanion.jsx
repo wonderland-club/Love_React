@@ -1,11 +1,11 @@
-import { THIRD_COMPONENT_NAME } from "../../route-constants";
 
-const ThirdComponent = () => {
+const AddCompanion = () => {
   return (
     <div>
-      {`${THIRD_COMPONENT_NAME} Page`}
+      添加伴侣
     </div>
   );
 };
 
-export default ThirdComponent;
+export default AddCompanion;
+

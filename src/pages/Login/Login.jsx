@@ -1,11 +1,10 @@
-import { FIFTH_COMPONENT_NAME } from "../../route-constants";
 
-const FifthComponent = () => {
+const Login = () => {
   return (
     <div>
-      {`${FIFTH_COMPONENT_NAME} Page`}
+      登入账号
     </div>
   );
 };
 
-export default FifthComponent;
+export default Login;

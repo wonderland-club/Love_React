@@ -1,11 +1,10 @@
-import { SECOND_COMPONENT_NAME } from "../../route-constants";
 
-const SecondComponent = () => {
+const LoveCourse = () => {
   return (
     <div>
-      {`${SECOND_COMPONENT_NAME} Page`}
+      恋爱历程
     </div>
   );
 };
 
-export default SecondComponent;
+export default LoveCourse;

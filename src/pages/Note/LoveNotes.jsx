@@ -1,11 +1,10 @@
-import { ROOT_COMPONENT_NAME } from "../../route-constants";
 
-const RootComponent = () => {
+const LoveNotes = () => {
   return (
     <div>
-      {`${ROOT_COMPONENT_NAME} Page`}
+      恋爱小记
     </div>
   );
 };
 
-export default RootComponent;
+export default LoveNotes;

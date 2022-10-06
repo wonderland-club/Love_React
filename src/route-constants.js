@@ -7,11 +7,11 @@ export const Register_COMPONENT_NAME = "Register";
 export const Register_COMPONENT_ROUTE = "/Register";
 // ------------------------------------------------------- 小记
 // 恋爱小记
-export const ROOT_COMPONENT_NAME = "LoveNotes";
-export const ROOT_COMPONENT_ROUTE = "/";
+export const LoveNotes_COMPONENT_NAME = "LoveNotes";
+export const LoveNotes_COMPONENT_ROUTE = "/";
 // 添加小记
-export const AddNote_COMPONENT_NAME = "LoveNotes";
-export const AddNote_COMPONENT_ROUTE = "/LoveNotes";
+export const AddNote_COMPONENT_NAME = "AddNote";
+export const AddNote_COMPONENT_ROUTE = "/AddNote";
 // ------------------------------------------------------- 历程
 //恋爱历程
 export const LoveCourse_COMPONENT_NAME = "LoveCourse";

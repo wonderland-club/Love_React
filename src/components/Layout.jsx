@@ -1,21 +1,44 @@
 import { Link } from "react-router-dom";
-import {} from "../route-constants";
+import {
+  Login_COMPONENT_ROUTE,
+  Login_COMPONENT_NAME,
+  Register_COMPONENT_ROUTE,
+  Register_COMPONENT_NAME,
+  LoveNotes_COMPONENT_ROUTE,
+  LoveNotes_COMPONENT_NAME,
+  AddNote_COMPONENT_ROUTE,
+  AddNote_COMPONENT_NAME,
+  LoveCourse_COMPONENT_ROUTE,
+  LoveCourse_COMPONENT_NAME,
+  AddJourney_COMPONENT_ROUTE,
+  AddJourney_COMPONENT_NAME,
+  AddCompanion_COMPONENT_ROUTE,
+  AddCompanion_COMPONENT_NAME,
+  Companion_COMPONENT_ROUTE,
+  Companion_COMPONENT_NAME,
+} from "../route-constants";
 
 const Layout = ({ children }) => {
   return (
     <div>
-      <h1>Layout</h1>
+      <h1>恋爱小记</h1>
 
       <nav>
-        {/* <Link to={`${ROOT_COMPONENT_ROUTE}`}>{`${ROOT_COMPONENT_NAME}`}</Link>
+        <Link to={Login_COMPONENT_ROUTE}>{Login_COMPONENT_NAME}</Link>
         <br />
-        <Link to={`${SECOND_COMPONENT_ROUTE}`}>{`${SECOND_COMPONENT_NAME}`}</Link>
+        <Link to={Register_COMPONENT_ROUTE}>{Register_COMPONENT_NAME}</Link>
         <br />
-        <Link to={`${THIRD_COMPONENT_ROUTE}`}>{`${THIRD_COMPONENT_NAME}`}</Link>
+        <Link to={LoveNotes_COMPONENT_ROUTE}>{LoveNotes_COMPONENT_NAME}</Link>
         <br />
-        <Link to={`${FOURTH_COMPONENT_ROUTE}`}>{`${FOURTH_COMPONENT_NAME}`}</Link>
+        <Link to={AddNote_COMPONENT_ROUTE}>{AddNote_COMPONENT_NAME}</Link>
         <br />
-        <Link to={`${FIFTH_COMPONENT_ROUTE}`}>{`${FIFTH_COMPONENT_NAME}`}</Link> */}
+        <Link to={LoveCourse_COMPONENT_ROUTE}>{LoveCourse_COMPONENT_NAME}</Link>
+        <br />
+        <Link to={AddJourney_COMPONENT_ROUTE}>{AddJourney_COMPONENT_NAME}</Link>
+        <br />
+        <Link to={AddCompanion_COMPONENT_ROUTE}>{AddCompanion_COMPONENT_NAME}</Link>
+        <br />
+        <Link to={Companion_COMPONENT_ROUTE}>{Companion_COMPONENT_NAME}</Link>
         <br />
       </nav>
       {children}
