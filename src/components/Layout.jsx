@@ -41,8 +41,8 @@ import {
 } from "../route-constants";
 
 const Layout = ({ children }) => {
-  const [value, setValue] = React.useState("Recents");
   const Navigate = useNavigate();
+  const [value, setValue] = React.useState("LoveNotes");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -80,8 +80,8 @@ const Layout = ({ children }) => {
       >
         <BottomNavigation onChange={handleChange} value={value} sx={h80}>
           <BottomNavigationAction
-            label="Recents"
-            value="Recents"
+            label="小记"
+            value="LoveNotes"
             icon={<ConnectWithoutContactIcon />}
             onClick={() => {
               Navigate(LoveNotes_COMPONENT_ROUTE);
@@ -89,8 +89,8 @@ const Layout = ({ children }) => {
             sx={h80}
           />
           <BottomNavigationAction
-            label="Favorites"
-            value="Favorites"
+            label="恋爱"
+            value="Companion"
             icon={<FavoriteIcon />}
             onClick={() => {
               Navigate(Companion_COMPONENT_ROUTE);
@@ -98,8 +98,8 @@ const Layout = ({ children }) => {
             sx={h80}
           />
           <BottomNavigationAction
-            label="Archive"
-            value="Archive"
+            label="历程"
+            value="LoveCourse"
             icon={<HistoryOutlinedIcon />}
             onClick={() => {
               Navigate(LoveCourse_COMPONENT_ROUTE);
@@ -115,7 +115,7 @@ const Layout = ({ children }) => {
 
 const pages = ["添加伴侣", "伴侣设置"];
 const settings = ["个人账户", "登出"];
-
+// 导航栏
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -139,7 +139,9 @@ const ResponsiveAppBar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <HomeWorkRoundedIcon
+            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -155,7 +157,7 @@ const ResponsiveAppBar = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            LOVE YOU
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
