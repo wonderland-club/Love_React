@@ -20,9 +20,10 @@ import {
   Companion_COMPONENT_ROUTE,
 } from "./route-constants";
 
-function App() {
+function App(props) {
+  // console.log(props.history);
   return (
-    <Layout>
+    <Layout history={props.history}>
       <Routes>
         <Route path={`${Login_COMPONENT_ROUTE}`} element={<Login />} />
         <Route path={`${Register_COMPONENT_ROUTE}`} element={<Register />} />
