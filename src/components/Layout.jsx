@@ -43,9 +43,6 @@ import {
 const Layout = ({ children }) => {
   const Navigate = useNavigate();
   const [value, setValue] = React.useState("LoveNotes");
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   const h80 = {
     height: 70,
@@ -78,7 +75,13 @@ const Layout = ({ children }) => {
         sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
         elevation={3}
       >
-        <BottomNavigation onChange={handleChange} value={value} sx={h80}>
+        <BottomNavigation
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+          value={value}
+          sx={h80}
+        >
           <BottomNavigationAction
             label="小记"
             value="LoveNotes"

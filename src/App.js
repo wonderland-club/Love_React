@@ -23,27 +23,36 @@ import {
 function App(props) {
   // console.log(props.history);
   return (
-    <Layout history={props.history}>
-      <Routes>
-        <Route path={`${Login_COMPONENT_ROUTE}`} element={<Login />} />
-        <Route path={`${Register_COMPONENT_ROUTE}`} element={<Register />} />
-        <Route path={`${LoveNotes_COMPONENT_ROUTE}`} element={<LoveNotes />} />
-        <Route path={`${AddNote_COMPONENT_ROUTE}`} element={<AddNote />} />
-        <Route
-          path={`${LoveCourse_COMPONENT_ROUTE}`}
-          element={<LoveCourse />}
-        />
-        <Route
-          path={`${AddJourney_COMPONENT_ROUTE}`}
-          element={<AddJourney />}
-        />
-        <Route
-          path={`${AddCompanion_COMPONENT_ROUTE}`}
-          element={<AddCompanion />}
-        />
-        <Route path={`${Companion_COMPONENT_ROUTE}`} element={<Companion />} />
-      </Routes>
-    </Layout>
+    <div>
+      <Layout history={props.history}>
+        <Routes>
+          <Route path={`${Login_COMPONENT_ROUTE}`} element={<Login />} />
+          <Route path={`${Register_COMPONENT_ROUTE}`} element={<Register />} />
+          <Route
+            path={`${LoveNotes_COMPONENT_ROUTE}`}
+            element={<LoveNotes />}
+          />
+          <Route path={`${AddNote_COMPONENT_ROUTE}`} element={<AddNote />} />
+          <Route
+            path={`${LoveCourse_COMPONENT_ROUTE}`}
+            element={<LoveCourse />}
+          />
+          <Route
+            path={`${AddJourney_COMPONENT_ROUTE}`}
+            element={<AddJourney />}
+          />
+          <Route
+            path={`${AddCompanion_COMPONENT_ROUTE}`}
+            element={<AddCompanion />}
+          />
+          <Route
+            path={`${Companion_COMPONENT_ROUTE}`}
+            element={<Companion />}
+          />
+        </Routes>
+        <div style={{ width: "100%", height: "70px" }}></div>
+      </Layout>
+    </div>
   );
 }
 
