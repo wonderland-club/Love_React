@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as React from "react";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Paper from "@mui/material/Paper";
@@ -18,29 +18,26 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import HomeWorkRoundedIcon from "@mui/icons-material/HomeWorkRounded";
 
 import {
-  Login_COMPONENT_ROUTE,
-  Login_COMPONENT_NAME,
-  Register_COMPONENT_ROUTE,
-  Register_COMPONENT_NAME,
   LoveNotes_COMPONENT_ROUTE,
-  LoveNotes_COMPONENT_NAME,
-  AddNote_COMPONENT_ROUTE,
-  AddNote_COMPONENT_NAME,
   LoveCourse_COMPONENT_ROUTE,
-  LoveCourse_COMPONENT_NAME,
-  AddJourney_COMPONENT_ROUTE,
-  AddJourney_COMPONENT_NAME,
-  AddCompanion_COMPONENT_ROUTE,
-  AddCompanion_COMPONENT_NAME,
   Companion_COMPONENT_ROUTE,
-  Companion_COMPONENT_NAME,
 } from "../route-constants";
 
 const Layout = ({ children }) => {
+  return (
+    <div>
+      <ResponsiveAppBar />
+      <BottomAppBar />
+      {/* 传入路由 */}
+      {children}
+    </div>
+  );
+};
+// 底栏
+const BottomAppBar = () => {
   const Navigate = useNavigate();
   const [value, setValue] = React.useState("LoveNotes");
 
@@ -48,78 +45,58 @@ const Layout = ({ children }) => {
     height: 70,
   };
   return (
-    <div>
-      <ResponsiveAppBar sx={{ position: "fixed", top: 0, left: 0, right: 0 }} />
-      {/* <nav>
-        <Link to={Login_COMPONENT_ROUTE}>{Login_COMPONENT_NAME}</Link>
-        <br />
-        <Link to={Register_COMPONENT_ROUTE}>{Register_COMPONENT_NAME}</Link>
-        <br />
-        <Link to={LoveNotes_COMPONENT_ROUTE}>{LoveNotes_COMPONENT_NAME}</Link>
-        <br />
-        <Link to={AddNote_COMPONENT_ROUTE}>{AddNote_COMPONENT_NAME}</Link>
-        <br />
-        <Link to={LoveCourse_COMPONENT_ROUTE}>{LoveCourse_COMPONENT_NAME}</Link>
-        <br />
-        <Link to={AddJourney_COMPONENT_ROUTE}>{AddJourney_COMPONENT_NAME}</Link>
-        <br />
-        <Link to={AddCompanion_COMPONENT_ROUTE}>
-          {AddCompanion_COMPONENT_NAME}
-        </Link>
-        <br />
-        <Link to={Companion_COMPONENT_ROUTE}>{Companion_COMPONENT_NAME}</Link>
-        <br />
-      </nav> */}
-
-      <Paper
-        sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
-        elevation={3}
+    <Paper
+      sx={{
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        right: 0,
+      }}
+      elevation={3}
+    >
+      <BottomNavigation
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+        value={value}
+        sx={h80}
       >
-        <BottomNavigation
-          onChange={(event, newValue) => {
-            setValue(newValue);
+        <BottomNavigationAction
+          label="小记"
+          value="LoveNotes"
+          icon={<ConnectWithoutContactIcon />}
+          onClick={() => {
+            Navigate(LoveNotes_COMPONENT_ROUTE);
           }}
-          value={value}
           sx={h80}
-        >
-          <BottomNavigationAction
-            label="小记"
-            value="LoveNotes"
-            icon={<ConnectWithoutContactIcon />}
-            onClick={() => {
-              Navigate(LoveNotes_COMPONENT_ROUTE);
-            }}
-            sx={h80}
-          />
-          <BottomNavigationAction
-            label="恋爱"
-            value="Companion"
-            icon={<FavoriteIcon />}
-            onClick={() => {
-              Navigate(Companion_COMPONENT_ROUTE);
-            }}
-            sx={h80}
-          />
-          <BottomNavigationAction
-            label="历程"
-            value="LoveCourse"
-            icon={<HistoryOutlinedIcon />}
-            onClick={() => {
-              Navigate(LoveCourse_COMPONENT_ROUTE);
-            }}
-            sx={h80}
-          />
-        </BottomNavigation>
-      </Paper>
-      {children}
-    </div>
+        />
+        <BottomNavigationAction
+          label="恋爱"
+          value="Companion"
+          icon={<FavoriteIcon />}
+          onClick={() => {
+            Navigate(Companion_COMPONENT_ROUTE);
+          }}
+          sx={h80}
+        />
+        <BottomNavigationAction
+          label="历程"
+          value="LoveCourse"
+          icon={<HistoryOutlinedIcon />}
+          onClick={() => {
+            Navigate(LoveCourse_COMPONENT_ROUTE);
+          }}
+          sx={h80}
+        />
+      </BottomNavigation>
+    </Paper>
   );
 };
 
-const pages = ["添加伴侣", "伴侣设置"];
-const settings = ["个人账户", "登出"];
 // 导航栏
 const ResponsiveAppBar = () => {
+  const pages = ["添加伴侣", "伴侣设置"];
+  const settings = ["个人账户", "登出"];
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -139,7 +116,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar sx={{ position: "fixed", top: 0, left: 0, right: 0 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <HomeWorkRoundedIcon

@@ -19,7 +19,7 @@ const Login = () => {
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <img style={{ width: "180px" }} src="img/qingLv.svg" alt="" srcset="" />
+        <img style={{ width: "180px" }} src="img/qingLv.svg" alt="" />
       </div>
 
       <Box
@@ -37,7 +37,7 @@ const Login = () => {
             "& > :not(style)": {
               m: 1,
             },
-            width: "25ch",
+            // width: "25ch",
             display: "flex",
             alignContent: "center",
             flexDirection: "column",
@@ -73,7 +73,7 @@ const Login = () => {
             }}
           >
             <LoadingButton
-              sx={{ width: "150px", position: "initial" }}
+              sx={{ width: "150px" }}
               size="large"
               disabled={false}
               onClick={() => {
@@ -90,7 +90,7 @@ const Login = () => {
             <Button
               variant="outlined"
               size="large"
-              sx={{ width: "150px", position: "initial", mb: 10 }}
+              sx={{ width: "110px", mb: 10 }}
               onClick={() => {
                 Navigate(Register_COMPONENT_ROUTE);
               }}

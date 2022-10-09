@@ -20,9 +20,9 @@ const Register = () => {
   const [loading, setLoading] = React.useState(false);
 
   return (
-    <div style={{ position: "initial"}}>
+    <div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <img style={{ width: "180px" }} src="img/qingLv.svg" alt="" srcset="" />
+        <img style={{ width: "180px" }} src="img/qingLv.svg" alt="" />
       </div>
       <Box
         sx={{
@@ -133,7 +133,6 @@ const Register = () => {
         </Box>
         <Box sx={{ "& > button": { m: 1 }, textAlign: "center", mt: 2 }}>
           <LoadingButton
-            sx={{ position: "initial" }}
             size="large"
             disabled={false}
             onClick={() => {
