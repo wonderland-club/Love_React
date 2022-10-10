@@ -127,7 +127,6 @@ const Register = () => {
             value={ConfirmPassword}
             onChange={(event) => {
               setConfirmPassword(event.target.value);
-              // console.log(event.target.value);
             }}
           />
         </Box>
@@ -144,7 +143,7 @@ const Register = () => {
             variant="contained"
             color={"success"}
           >
-            注册账号
+            注册账号并登入
           </LoadingButton>
         </Box>
       </Box>

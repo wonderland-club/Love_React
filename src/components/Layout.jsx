@@ -1,11 +1,4 @@
-import { useNavigate } from "react-router-dom";
 import * as React from "react";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import Paper from "@mui/material/Paper";
-import BottomNavigation from "@mui/material/BottomNavigation";
-import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -20,76 +13,13 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import HomeWorkRoundedIcon from "@mui/icons-material/HomeWorkRounded";
 
-import {
-  LoveNotes_COMPONENT_ROUTE,
-  LoveCourse_COMPONENT_ROUTE,
-  Companion_COMPONENT_ROUTE,
-} from "../route-constants";
-
 const Layout = ({ children }) => {
   return (
     <div>
       <ResponsiveAppBar />
-      <BottomAppBar />
       {/* 传入路由 */}
       {children}
     </div>
-  );
-};
-// 底栏
-const BottomAppBar = () => {
-  const Navigate = useNavigate();
-  const [value, setValue] = React.useState("LoveNotes");
-
-  const h80 = {
-    height: 70,
-  };
-  return (
-    <Paper
-      sx={{
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
-      }}
-      elevation={3}
-    >
-      <BottomNavigation
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-        value={value}
-        sx={h80}
-      >
-        <BottomNavigationAction
-          label="小记"
-          value="LoveNotes"
-          icon={<ConnectWithoutContactIcon />}
-          onClick={() => {
-            Navigate(LoveNotes_COMPONENT_ROUTE);
-          }}
-          sx={h80}
-        />
-        <BottomNavigationAction
-          label="恋爱"
-          value="Companion"
-          icon={<FavoriteIcon />}
-          onClick={() => {
-            Navigate(Companion_COMPONENT_ROUTE);
-          }}
-          sx={h80}
-        />
-        <BottomNavigationAction
-          label="历程"
-          value="LoveCourse"
-          icon={<HistoryOutlinedIcon />}
-          onClick={() => {
-            Navigate(LoveCourse_COMPONENT_ROUTE);
-          }}
-          sx={h80}
-        />
-      </BottomNavigation>
-    </Paper>
   );
 };
 
