@@ -55,6 +55,9 @@ const Login = () => {
               setEmail(event.target.value);
               // console.log(event.target.value);
             }}
+            onBlur={()=>{
+              alert(email);
+            }}
           />
           <TextField
             id="outlined-name"
