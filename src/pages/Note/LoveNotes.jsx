@@ -20,7 +20,7 @@ const LoveNotes = () => {
           <Button
             size="40px"
             color="secondary"
-            // endIcon={<AddCardIcon fontSize="large" />}
+            endIcon={<AddCardIcon fontSize="large" />}
           >
             Secondary
           </Button>
