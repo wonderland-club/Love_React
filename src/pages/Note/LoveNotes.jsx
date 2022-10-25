@@ -23,7 +23,7 @@ const LoveNotes = () => {
             endIcon={<AddCardIcon fontSize="large" />}
             onClick={() => {
               console.log("添加小记");
-              fetch("http://example.com/movies.json")
+              fetch("api/k")
                 .then((response) => response.json())
                 .then((data) => console.log(data));
             }}
