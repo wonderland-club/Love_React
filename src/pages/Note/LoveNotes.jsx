@@ -21,8 +21,14 @@ const LoveNotes = () => {
             size="40px"
             color="secondary"
             endIcon={<AddCardIcon fontSize="large" />}
+            onClick={() => {
+              console.log("添加小记");
+              fetch("http://example.com/movies.json")
+                .then((response) => response.json())
+                .then((data) => console.log(data));
+            }}
           >
-            Secondary
+            添加小记
           </Button>
         </Box>
         <Grid
@@ -93,10 +99,8 @@ const LoveCard = (props) => {
           <Typography gutterBottom variant="h5" component="div">
             {props.title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            <div className={"ss"} style={style}>
-              {props.Content}
-            </div>
+          <Typography component={"span"} variant="body2" color="text.secondary">
+            <Box sx={style}>{props.Content}</Box>
           </Typography>
         </CardContent>
       </CardActionArea>
