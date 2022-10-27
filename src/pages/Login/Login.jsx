@@ -50,18 +50,21 @@ const Login = () => {
           <TextField
             id="outlined-name"
             label="邮箱 Email"
+            autoFocus={true}
+            error={false}//输入错误
             value={email}
             onChange={(event) => {
               setEmail(event.target.value);
               // console.log(event.target.value);
             }}
             onBlur={()=>{
-              alert(email);
+              alert("email");
             }}
           />
           <TextField
             id="outlined-name"
             label="输入密码"
+            type={"password"}
             value={ps}
             onChange={(event) => {
               setPS(event.target.value);
