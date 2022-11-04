@@ -4,9 +4,10 @@ import TextField from "@mui/material/TextField";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { Register_COMPONENT_ROUTE } from "../../route-constants";
-const Login = () => {
+
+const Login = (props) => {
   // 邮箱
   const [email, setEmail] = React.useState("");
   // passWorld
@@ -15,7 +16,7 @@ const Login = () => {
   const [loading, setLoading] = React.useState(false);
   //   路由跳转
   const Navigate = useNavigate();
-
+  const location = useLocation();//查看当前的location
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -50,18 +51,21 @@ const Login = () => {
           <TextField
             id="outlined-name"
             label="邮箱 Email"
+            autoFocus={true}
+            error={false} //输入错误
             value={email}
             onChange={(event) => {
               setEmail(event.target.value);
               // console.log(event.target.value);
             }}
-            onBlur={()=>{
-              alert(email);
+            onBlur={() => {
+              // alert("email");
             }}
           />
           <TextField
             id="outlined-name"
             label="输入密码"
+            type={"password"}
             value={ps}
             onChange={(event) => {
               setPS(event.target.value);
@@ -80,7 +84,8 @@ const Login = () => {
               size="large"
               disabled={false}
               onClick={() => {
-                setLoading(true);
+                console.log(location);
+                // setLoading(true);
               }}
               endIcon={<SendIcon />}
               loading={loading}
