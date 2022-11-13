@@ -20,6 +20,9 @@ import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
 import Login from "../pages/Login/Login";
+import { useSelector, useDispatch } from "react-redux";
+import { logIn, logOut } from "../redux/action";
+
 import {
   Login_COMPONENT_ROUTE,
   Register_COMPONENT_ROUTE,
@@ -31,14 +34,27 @@ import {
   Companion_COMPONENT_ROUTE,
 } from "../route-constants";
 import { margin } from "@mui/system";
-
 const Layout = ({ children }) => {
+  const dispatch = useDispatch();
   // 控制顶栏和底栏的显示
-  const [Checklogin, setChecklogin] = React.useState(true);
+  const Checklogin = useSelector((state) => state.IdentityVerification);
 
   return (
     <div>
       {Checklogin ? <ResponsiveAppBar /> : null}
+      {/* <button
+        type="button"
+        onClick={() => {
+          if (Checklogin) {
+            dispatch(logOut());
+          } else {
+            dispatch(logIn());
+          }
+        }}
+      >
+        {" "}
+        点我登入
+      </button> */}
       {/* 传入路由 */}
       {children}
     </div>
@@ -47,6 +63,8 @@ const Layout = ({ children }) => {
 
 // 导航栏
 const ResponsiveAppBar = () => {
+  const Navigate = useNavigate();
+
   const pages = ["添加伴侣", "伴侣设置"];
   const settings = ["个人账户", "登出"];
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -55,6 +73,7 @@ const ResponsiveAppBar = () => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -62,9 +81,43 @@ const ResponsiveAppBar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+  const fetchLogout = async () => {
+    await fetch("api/logout", {
+      method: "GET",
 
-  const handleCloseUserMenu = () => {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(DATA),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject("something went wrong!");
+        }
+      })
+      .then((data) => {
+        Navigate(Login_COMPONENT_ROUTE);
+        return console.log("data is：", data);
+      })
+      .catch((error) => {
+        Navigate(LoveNotes_COMPONENT_ROUTE);
+        console.log("登出失败", error);
+      });
+  };
+
+  const handleCloseUserMenu = (setting) => {
+    // console.log(settings[0]);
     setAnchorElUser(null);
+    if (setting == settings[0]) {
+      console.log(setting + "222");
+    } else if (setting == settings[1]) {
+      // 登出
+      fetchLogout();
+      console.log(setting + "lll");
+    }
+    // console.log(setting);
   };
 
   return (
@@ -185,11 +238,17 @@ const ResponsiveAppBar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
+                {settings.map((setting) => {
+                  // console.log(setting);
+                  return (
+                    <MenuItem
+                      key={setting}
+                      onClick={() => handleCloseUserMenu(setting)}
+                    >
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  );
+                })}
               </Menu>
             </Box>
           </Toolbar>
