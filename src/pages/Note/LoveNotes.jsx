@@ -39,32 +39,32 @@ const LoveNotes = () => {
         >
           <Grid xs={6} sm={4} md={3} item style={{ ...centerGrid }}>
             <LoveCard
-              imageSrc={"https://junyan101.gitee.io/si-yuan/img/1.jpg"}
-              title={"keLi"}
+              imageSrc={"img/wonderland (1).png"}
+              title={"Enndme"}
               Content={"卢卡斯加大素和杜萨核对"}
               data={"2022-11-28"}
             />
           </Grid>
           <Grid xs={6} sm={4} md={3} item style={{ ...centerGrid }}>
             <LoveCard
-              imageSrc={"https://junyan101.gitee.io/si-yuan/img/3.jpg"}
-              title={"liSa"}
+              imageSrc={"img/wonderland (2).png"}
+              title={"Enndme"}
               Content={"卢卡斯加大素和杜萨核对"}
               data={"2022-01-05"}
             />
           </Grid>
           <Grid xs={6} sm={4} md={3} item style={{ ...centerGrid }}>
             <LoveCard
-              imageSrc={"https://junyan101.gitee.io/si-yuan/img/2.jpg"}
-              title={"kaiJi"}
+              imageSrc={"img/wonderland (3).png"}
+              title={"鞠婧祎"}
               Content={"卢卡斯加大素和杜萨核对"}
               data={"2022-01-20"}
             />
           </Grid>
           <Grid xs={6} sm={4} md={3} item style={{ ...centerGrid }}>
             <LoveCard
-              imageSrc={"https://junyan101.gitee.io/si-yuan/img/4.jpg"}
-              title={"luSe"}
+              imageSrc={"img/wonderland (4).png"}
+              title={"Enndme"}
               Content={
                 "卢卡斯加大素和杜萨核对dfgdfg 打发手动阀打发十分士大夫士大夫深度复第三方首付大概豆腐干风格地方地方跟岁的法国递归 递归发"
               }

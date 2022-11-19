@@ -9,3 +9,16 @@ export const logOut = () => {
     type: "LOG_OUT",
   };
 };
+
+export const GetUserName = () => {
+  return {
+    type: "Get_UserName",
+  }
+}
+export const SetUserName = (DATA) => {
+  return {
+    type: "Set_UserName",
+    data: DATA
+  }
+}
+

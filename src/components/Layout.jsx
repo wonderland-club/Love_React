@@ -21,7 +21,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
 import Login from "../pages/Login/Login";
 import { useSelector, useDispatch } from "react-redux";
-import { logIn, logOut } from "../redux/action";
+import { logIn, logOut, SetUserName, GetUserName } from "../redux/action";
 
 import {
   Login_COMPONENT_ROUTE,
@@ -64,6 +64,7 @@ const Layout = ({ children }) => {
 // 导航栏
 const ResponsiveAppBar = () => {
   const Navigate = useNavigate();
+  const userName_1 = useSelector((state) => state.UserName);
 
   const pages = ["添加伴侣", "伴侣设置"];
   const settings = ["个人账户", "登出"];
@@ -215,11 +216,11 @@ const ResponsiveAppBar = () => {
                 </Button>
               ))}
             </Box>
-
+            <Box sx={{ mr: 1 }}>{userName_1}</Box>
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="打开设置">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="陈" src="/img/me.png" />
+                  <Avatar alt="陈" src="/img/wonderland (3).jpg" />
                 </IconButton>
               </Tooltip>
               <Menu

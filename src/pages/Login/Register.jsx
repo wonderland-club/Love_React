@@ -19,6 +19,39 @@ const Register = () => {
   // 提交 加载
   const [loading, setLoading] = React.useState(false);
 
+  // headers: {
+  //   "Content-Type": "application/json",
+  // },
+  const RegisterData = async () => {
+    const DATA = {
+      user_name: name,
+      gender: value,
+      email: email,
+      password: ps,
+    };
+    // console.log(DATA);
+    await fetch("api/registration", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(DATA),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject("注册失败");
+        }
+      })
+      .then((data) => {
+        return console.log(data);
+      })
+      .catch((error) => {
+        console.log("error : ", error);
+      });
+  };
+
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -135,7 +168,8 @@ const Register = () => {
             size="large"
             disabled={false}
             onClick={() => {
-              setLoading(true);
+              // setLoading(true);
+              RegisterData();
             }}
             endIcon={<ContactEmergencyIcon />}
             loading={loading}

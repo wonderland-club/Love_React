@@ -27,6 +27,35 @@ const Login = (props) => {
   const Navigate = useNavigate();
   const location = useLocation(); //查看当前的location
 
+  const loginData = async () => {
+    // setLoading(true);
+
+    const DATA = { email: email, password: ps };
+
+    await fetch("api/login", {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(DATA),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject("something went wrong!");
+        }
+      })
+      .then((data) => {
+        dispatch(logIn());
+        Navigate(LoveNotes_COMPONENT_ROUTE);
+        return console.log("data is", data);
+      })
+      .catch((error) => {
+        console.log("error is", error);
+      });
+  };
   // 控制顶栏和底栏的显示
 
   // useEffect(() => {
@@ -104,35 +133,7 @@ const Login = (props) => {
               sx={{ width: "150px" }}
               size="large"
               disabled={false}
-              onClick={async () => {
-                // setLoading(true);
-
-                const DATA = { email: email, password: ps };
-
-                await fetch("api/login", {
-                  method: "POST",
-
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(DATA),
-                })
-                  .then((response) => {
-                    if (response.ok) {
-                      return response.json();
-                    } else {
-                      return Promise.reject("something went wrong!");
-                    }
-                  })
-                  .then((data) => {
-                    dispatch(logIn());
-                    Navigate(LoveNotes_COMPONENT_ROUTE);
-                    return console.log("data is", data);
-                  })
-                  .catch((error) => {
-                    console.log("error is", error);
-                  });
-              }}
+              onClick={() => loginData()}
               endIcon={<SendIcon />}
               loading={loading}
               loadingPosition="end"

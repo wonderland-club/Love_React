@@ -13,7 +13,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 // import { logIn, logOut } from "../redux/action";
-import { logIn, logOut } from "./redux/action";
+import { logIn, logOut, SetUserName } from "./redux/action";
 
 import {
     Login_COMPONENT_ROUTE,
@@ -32,7 +32,8 @@ function App() {
     const dispatch = useDispatch();
 
     const Navigate = useNavigate();
-    const Checklogin = useSelector((state) => state.IdentityVerification);
+    const userName_1 = useSelector((state) => state.UserName);
+
 
     const fetchMe = async () => {
         await fetch("api/me", {
@@ -51,17 +52,22 @@ function App() {
                 }
             })
             .then((data) => {
+                // 登入成功
+                // console.log(data["username"]);
+                dispatch(SetUserName(data["username"]))
+                console.log(userName_1);
+                // console.log(userName);
                 dispatch(logIn());
                 Navigate(LoveNotes_COMPONENT_ROUTE);
-                return console.log("data is：", data);
+                return console.log("登入成功");
             })
             .catch((error) => {
                 Navigate(Login_COMPONENT_ROUTE);
-                console.log("账号或密码错误", error);
+                console.log("未登入", error);
             });
     }
     useEffect(() => {
-        console.log("====" + location.pathname);
+        // console.log("====" + location.pathname);
         if (location.pathname == "/Login") {
             console.log("调用初始化函数");
             dispatch(logOut());
