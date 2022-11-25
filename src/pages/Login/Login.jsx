@@ -6,13 +6,19 @@ import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
+  Login_COMPONENT_ROUTE,
   Register_COMPONENT_ROUTE,
   LoveNotes_COMPONENT_ROUTE,
+  AddNote_COMPONENT_ROUTE,
+  LoveCourse_COMPONENT_ROUTE,
+  AddJourney_COMPONENT_ROUTE,
+  AddCompanion_COMPONENT_ROUTE,
+  Companion_COMPONENT_ROUTE,
 } from "../../route-constants";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { logIn, logOut } from "../redux/action";
-import { logIn, logOut } from "../../redux/action";
+import { logIn, logOut, SetUserName } from "../../redux/action";
 const Login = (props) => {
   const dispatch = useDispatch();
 
@@ -50,12 +56,52 @@ const Login = (props) => {
       .then((data) => {
         dispatch(logIn());
         Navigate(LoveNotes_COMPONENT_ROUTE);
+        fetchMe();
         return console.log("data is", data);
       })
       .catch((error) => {
         console.log("error is", error);
       });
   };
+
+
+  // me
+  const fetchMe = async () => {
+    await fetch("api/me", {
+      method: "GET",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(DATA),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject("something went wrong!");
+        }
+      })
+      .then(async (data) => {
+        // 登入成功
+        // console.log(data["username"]);
+        dispatch(SetUserName(await data["username"]))
+
+        // console.log(userName_1);
+        // console.log(userName);
+        // dispatch(logIn());
+        Navigate(LoveNotes_COMPONENT_ROUTE);
+        return console.log("登入成功");
+      })
+      .catch((error) => {
+        if (location.pathname == "/Login") {
+          console.log("调用初始化函数");
+          dispatch(logOut());
+      }
+        Navigate(Login_COMPONENT_ROUTE);
+        console.log("未登入", error);
+      });
+  }
   // 控制顶栏和底栏的显示
 
   // useEffect(() => {

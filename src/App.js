@@ -34,7 +34,6 @@ function App() {
     const Navigate = useNavigate();
     const userName_1 = useSelector((state) => state.UserName);
 
-
     const fetchMe = async () => {
         await fetch("api/me", {
             method: "GET",
@@ -48,35 +47,35 @@ function App() {
                 if (response.ok) {
                     return response.json();
                 } else {
-                    return Promise.reject("something went wrong!");
+                    return Promise.reject("me_something went wrong!");
                 }
             })
-            .then((data) => {
+            .then(async (data) => {
                 // 登入成功
                 // console.log(data["username"]);
-                dispatch(SetUserName(data["username"]))
-                console.log(userName_1);
+                dispatch(SetUserName(await data["username"]))
+
+                // console.log(userName_1);
                 // console.log(userName);
                 dispatch(logIn());
                 Navigate(LoveNotes_COMPONENT_ROUTE);
-                return console.log("登入成功");
+                return console.log("登入成功_me");
             })
             .catch((error) => {
+                if (location.pathname == "/Login") {
+                    console.log("调用初始化函数");
+                    dispatch(logOut());
+                }
                 Navigate(Login_COMPONENT_ROUTE);
-                console.log("未登入", error);
+                console.log("未登入_me", error);
             });
     }
-    useEffect(() => {
-        // console.log("====" + location.pathname);
-        if (location.pathname == "/Login") {
-            console.log("调用初始化函数");
-            dispatch(logOut());
-        }
-    }, [dispatch, location.pathname]);
 
     useEffect(() => {
-        fetchMe();
-    }, []);
+        if (location.pathname != "/Register") {
+            fetchMe();
+        }
+    }, [location.pathname]);
 
     return (
         <div>

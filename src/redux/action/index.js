@@ -21,4 +21,9 @@ export const SetUserName = (DATA) => {
     data: DATA
   }
 }
+export const undefined_User = () => {
+  return {
+    type: "undefined"
+  }
+}
 

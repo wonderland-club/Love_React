@@ -1,10 +1,32 @@
-import * as React from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import ContactEmergencyIcon from "@mui/icons-material/ContactEmergency";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+
+// import { logIn, logOut } from "../redux/action";
+import { logIn, logOut, SetUserName } from "../../redux/action";
+import {
+  Login_COMPONENT_ROUTE,
+  Register_COMPONENT_ROUTE,
+  LoveNotes_COMPONENT_ROUTE,
+  AddNote_COMPONENT_ROUTE,
+  LoveCourse_COMPONENT_ROUTE,
+  AddJourney_COMPONENT_ROUTE,
+  AddCompanion_COMPONENT_ROUTE,
+  Companion_COMPONENT_ROUTE,
+} from "../../route-constants";
+
+
 const Register = () => {
+  const dispatch = useDispatch();
+  const Navigate = useNavigate();
+  const location = useLocation(); //查看当前的location
+
+
   // 性别
   const options = ["男", "女", "TA"];
   const [value, setValue] = React.useState(options[2]); //如果没选就是 null
@@ -22,6 +44,73 @@ const Register = () => {
   // headers: {
   //   "Content-Type": "application/json",
   // },
+
+  const loginData = async () => {
+    // setLoading(true);
+
+    const DATA = { email: email, password: ps };
+
+    await fetch("api/login", {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(DATA),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject("something went wrong!");
+        }
+      })
+      .then((data) => {
+        dispatch(logIn());
+        Navigate(LoveNotes_COMPONENT_ROUTE);
+        fetchMe();
+        return console.log("data is", data);
+      })
+      .catch((error) => {
+        console.log("error is", error);
+      });
+  };
+
+  // me
+  const fetchMe = async () => {
+    await fetch("api/me", {
+      method: "GET",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(DATA),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return Promise.reject("something went wrong!");
+        }
+      })
+      .then(async (data) => {
+        // 登入成功
+        // console.log(data["username"]);
+        dispatch(SetUserName(await data["username"]))
+        Navigate(LoveNotes_COMPONENT_ROUTE);
+        return console.log("登入成功");
+      })
+      .catch((error) => {
+        if (location.pathname == "/Login") {
+          console.log("调用初始化函数");
+          dispatch(logOut());
+        }
+        Navigate(Login_COMPONENT_ROUTE);
+        console.log("未登入", error);
+      });
+  }
+
+  // 注册账号
   const RegisterData = async () => {
     const DATA = {
       user_name: name,
@@ -44,7 +133,8 @@ const Register = () => {
           return Promise.reject("注册失败");
         }
       })
-      .then((data) => {
+      .then(async (data) => {
+        await loginData();
         return console.log(data);
       })
       .catch((error) => {
@@ -139,6 +229,7 @@ const Register = () => {
             id="outlined-name"
             label="设置密码"
             value={ps}
+            type={"password"}
             onChange={(event) => {
               setPS(event.target.value);
               // console.log(event.target.value);
@@ -157,6 +248,7 @@ const Register = () => {
           <TextField
             id="outlined-name"
             label="确认密码"
+            type={"password"}
             value={ConfirmPassword}
             onChange={(event) => {
               setConfirmPassword(event.target.value);
@@ -170,12 +262,14 @@ const Register = () => {
             onClick={() => {
               // setLoading(true);
               RegisterData();
+
             }}
             endIcon={<ContactEmergencyIcon />}
             loading={loading}
             loadingPosition="end"
             variant="contained"
             color={"success"}
+
           >
             注册账号并登入
           </LoadingButton>

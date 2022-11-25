@@ -21,7 +21,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
 import Login from "../pages/Login/Login";
 import { useSelector, useDispatch } from "react-redux";
-import { logIn, logOut, SetUserName, GetUserName } from "../redux/action";
+import { logIn, logOut, SetUserName, GetUserName, undefined_User } from "../redux/action";
 
 import {
   Login_COMPONENT_ROUTE,
@@ -35,7 +35,6 @@ import {
 } from "../route-constants";
 import { margin } from "@mui/system";
 const Layout = ({ children }) => {
-  const dispatch = useDispatch();
   // 控制顶栏和底栏的显示
   const Checklogin = useSelector((state) => state.IdentityVerification);
 
@@ -63,6 +62,8 @@ const Layout = ({ children }) => {
 
 // 导航栏
 const ResponsiveAppBar = () => {
+  const dispatch = useDispatch();
+
   const Navigate = useNavigate();
   const userName_1 = useSelector((state) => state.UserName);
 
@@ -99,6 +100,7 @@ const ResponsiveAppBar = () => {
         }
       })
       .then((data) => {
+        dispatch(undefined_User());
         Navigate(Login_COMPONENT_ROUTE);
         return console.log("data is：", data);
       })
