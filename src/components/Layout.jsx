@@ -101,6 +101,7 @@ const ResponsiveAppBar = () => {
       })
       .then((data) => {
         dispatch(undefined_User());
+        dispatch(logOut());
         Navigate(Login_COMPONENT_ROUTE);
         return console.log("data is：", data);
       })

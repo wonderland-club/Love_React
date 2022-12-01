@@ -58,7 +58,7 @@ function App() {
                 // console.log(userName_1);
                 // console.log(userName);
                 dispatch(logIn());
-                Navigate(LoveNotes_COMPONENT_ROUTE);
+                // Navigate(LoveNotes_COMPONENT_ROUTE);
                 return console.log("登入成功_me");
             })
             .catch((error) => {
@@ -75,7 +75,7 @@ function App() {
         if (location.pathname != "/Register") {
             fetchMe();
         }
-    }, [location.pathname]);
+    }, []);
 
     return (
         <div>
