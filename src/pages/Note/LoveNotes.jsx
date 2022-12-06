@@ -7,7 +7,30 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import AddCardIcon from "@mui/icons-material/AddCard";
+import { useNavigate, useLocation } from "react-router-dom";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import SpeedDial from "@mui/material/SpeedDial";
+import SpeedDialIcon from "@mui/material/SpeedDialIcon";
+import SpeedDialAction from "@mui/material/SpeedDialAction";
+import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";
+import SaveIcon from "@mui/icons-material/Save";
+import PrintIcon from "@mui/icons-material/Print";
+import ShareIcon from "@mui/icons-material/Share";
+
+import {
+  Login_COMPONENT_ROUTE,
+  Register_COMPONENT_ROUTE,
+  LoveNotes_COMPONENT_ROUTE,
+  AddNote_COMPONENT_ROUTE,
+  LoveCourse_COMPONENT_ROUTE,
+  AddJourney_COMPONENT_ROUTE,
+  AddCompanion_COMPONENT_ROUTE,
+  Companion_COMPONENT_ROUTE,
+} from "../../route-constants";
 const LoveNotes = () => {
+  //   路由跳转
+  const Navigate = useNavigate();
+
   const centerGrid = {
     display: "flex",
     justifyContent: "center",
@@ -15,22 +38,14 @@ const LoveNotes = () => {
   };
   return (
     <div>
+      <Box>
+        <Cover />
+      </Box>
+      {/* 按钮 */}
+      <Box>
+        <AddButton />
+      </Box>
       <Box sx={{ flexGrow: 1, mt: 9 }}>
-        <Box s={{}}>
-          <Button
-            size="40px"
-            color="secondary"
-            endIcon={<AddCardIcon fontSize="large" />}
-            onClick={() => {
-              console.log("添加小记");
-              fetch("api/k")
-                .then((response) => response.json())
-                .then((data) => console.log(data));
-            }}
-          >
-            添加小记
-          </Button>
-        </Box>
         <Grid
           container
           // spacing={{ xs: 2, md: 2 }}
@@ -77,6 +92,7 @@ const LoveNotes = () => {
   );
 };
 
+// 卡片
 const LoveCard = (props) => {
   const style = {
     overflow: "hidden",
@@ -115,5 +131,65 @@ const LoveCard = (props) => {
     </Card>
   );
 };
+
+// 添加按钮
+function AddButton() {
+  const Navigate = useNavigate();
+
+  const actions = [
+    { icon: <AddCircleOutlineIcon />, name: "Add" },
+    { icon: <SaveIcon />, name: "Save" },
+    { icon: <PrintIcon />, name: "Print" },
+    { icon: <ShareIcon />, name: "Share" },
+  ];
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = (actionName) => {
+    setOpen(false);
+    if (actionName === "Add") {
+      fetch("api/k")
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+      Navigate(AddNote_COMPONENT_ROUTE);
+    }
+  };
+  return (
+    <>
+      <SpeedDial
+        ariaLabel="SpeedDial controlled open example"
+        sx={{ position: "fixed", bottom: 100, right: 16 }}
+        icon={<SpeedDialIcon />}
+        onClose={handleClose}
+        onOpen={handleOpen}
+        open={open}
+      >
+        ß
+        {actions.map((action) => (
+          <SpeedDialAction
+            key={action.name}
+            icon={action.icon}
+            tooltipTitle={action.name}
+            onClick={() => handleClose(action.name)}
+          />
+        ))}
+      </SpeedDial>
+    </>
+  );
+}
+
+// 封面
+function Cover() {
+  return (
+    <div>
+      <CardMedia
+        component="img"
+        alt="green iguana"
+        height="180"
+        image="img/wonderland (2).png"
+      />
+    </div>
+  );
+}
 
 export default LoveNotes;

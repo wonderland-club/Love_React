@@ -68,7 +68,7 @@ const ResponsiveAppBar = () => {
   const userName_1 = useSelector((state) => state.UserName);
 
   const pages = ["添加伴侣", "伴侣设置"];
-  const settings = ["个人账户", "登出"];
+  const settings = ["个人设置", "登出"];
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
