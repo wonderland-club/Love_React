@@ -9,6 +9,7 @@ import LoveCourse from "./pages/Course/LoveCourse";
 import AddJourney from "./pages/Course/AddJourney";
 import AddCompanion from "./pages/Companion/AddCompanion";
 import Companion from "./pages/Companion/Companion";
+import PersonalAccount from "./pages/settings/PersonalAccount";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,6 +25,7 @@ import {
     AddJourney_COMPONENT_ROUTE,
     AddCompanion_COMPONENT_ROUTE,
     Companion_COMPONENT_ROUTE,
+    Personal_Account_ROUTE
 } from "./route-constants";
 
 
@@ -72,7 +74,7 @@ function App() {
     }
 
     useEffect(() => {
-        if (location.pathname != "/Register") {
+        if (location.pathname !== "/Register") {
             fetchMe();
         }
     }, []);
@@ -104,6 +106,9 @@ function App() {
                     <Route
                         path={`${Companion_COMPONENT_ROUTE}`}
                         element={<Companion />}
+                    />
+                    <Route path={`${Personal_Account_ROUTE}`}
+                        element={<PersonalAccount />}
                     />
                 </Routes>
                 <div style={{ marginBottom: '100px' }} />

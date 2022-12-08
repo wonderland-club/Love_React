@@ -26,3 +26,7 @@ export const AddCompanion_COMPONENT_ROUTE = "/AddCompanion";
 // 伴侣页面 Companion
 export const Companion_COMPONENT_NAME = "伴侣";
 export const Companion_COMPONENT_ROUTE = "/Companion";
+// ------------------------------------------------------- 个人设置
+//个人账号 Personal_Account 
+export const Personal_Account_NAME = "个人账号";
+export const Personal_Account_ROUTE = "/PersonalAccount";

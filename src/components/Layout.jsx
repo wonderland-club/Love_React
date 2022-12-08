@@ -21,7 +21,13 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
 import Login from "../pages/Login/Login";
 import { useSelector, useDispatch } from "react-redux";
-import { logIn, logOut, SetUserName, GetUserName, undefined_User } from "../redux/action";
+import {
+  logIn,
+  logOut,
+  SetUserName,
+  GetUserName,
+  undefined_User,
+} from "../redux/action";
 
 import {
   Login_COMPONENT_ROUTE,
@@ -32,6 +38,7 @@ import {
   AddJourney_COMPONENT_ROUTE,
   AddCompanion_COMPONENT_ROUTE,
   Companion_COMPONENT_ROUTE,
+  Personal_Account_ROUTE,
 } from "../route-constants";
 import { margin } from "@mui/system";
 const Layout = ({ children }) => {
@@ -41,19 +48,6 @@ const Layout = ({ children }) => {
   return (
     <div>
       {Checklogin ? <ResponsiveAppBar /> : null}
-      {/* <button
-        type="button"
-        onClick={() => {
-          if (Checklogin) {
-            dispatch(logOut());
-          } else {
-            dispatch(logIn());
-          }
-        }}
-      >
-        {" "}
-        点我登入
-      </button> */}
       {/* 传入路由 */}
       {children}
     </div>
@@ -112,11 +106,12 @@ const ResponsiveAppBar = () => {
   };
 
   const handleCloseUserMenu = (setting) => {
-    // console.log(settings[0]);
     setAnchorElUser(null);
-    if (setting == settings[0]) {
-      console.log(setting + "222");
-    } else if (setting == settings[1]) {
+    console.log(setting);
+    // 个人设置
+    if (setting === settings[0]) {
+      Navigate(Personal_Account_ROUTE);
+    } else if (setting === settings[1]) {
       // 登出
       fetchLogout();
       console.log(setting + "lll");
