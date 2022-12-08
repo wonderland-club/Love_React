@@ -8,6 +8,8 @@ import ListSubheader from "@mui/material/ListSubheader";
 import Button from "@mui/material/Button";
 import { GetUserName } from "../../redux/action";
 import { useSelector, useDispatch } from "react-redux";
+import { AddCompanion_COMPONENT_ROUTE } from "../../route-constants";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const settingList = [
   { title: "伴侣关系", list: ["添加伴侣", "查看申请"] },
@@ -27,11 +29,12 @@ export default function PersonalAccount() {
 }
 
 function PinnedSubheaderList() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const Navigate = useNavigate();
 
   // 添加伴侣
   function Add_a_partner() {
-    console.log("chen");
+    Navigate(AddCompanion_COMPONENT_ROUTE);
   }
   // 查看申请
   function View_Application() {}

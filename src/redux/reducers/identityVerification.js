@@ -1,6 +1,8 @@
 
 // 用于身份验证的 reducers
-const IdentityVerification = (state = false, action) => {
+const initState = false;
+const IdentityVerification = (state = initState, action) => {
+    console.log("state:" + initState);
     switch (action.type) {
         case "LOG_IN":
             return true;

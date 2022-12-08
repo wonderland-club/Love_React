@@ -20,6 +20,9 @@ export const LoveCourse_COMPONENT_ROUTE = "/LoveCourse";
 export const AddJourney_COMPONENT_NAME = "添加历程";
 export const AddJourney_COMPONENT_ROUTE = "/AddJourney";
 // ------------------------------------------------------- 伴侣
+// 查看伴侣申请 AplikasiMitra
+export const AplikasiMitra_COMPONENT_NAME = "伴侣申请";
+export const AplikasiMitra_COMPONENT_ROUTE = "/AplikasiMitra";
 //添加伴侣 AddCompanion
 export const AddCompanion_COMPONENT_NAME = "添加伴侣";
 export const AddCompanion_COMPONENT_ROUTE = "/AddCompanion";

@@ -10,6 +10,7 @@ import AddJourney from "./pages/Course/AddJourney";
 import AddCompanion from "./pages/Companion/AddCompanion";
 import Companion from "./pages/Companion/Companion";
 import PersonalAccount from "./pages/settings/PersonalAccount";
+import AplikasiMitra from "./pages/Companion/AplikasiMitra";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -25,7 +26,8 @@ import {
     AddJourney_COMPONENT_ROUTE,
     AddCompanion_COMPONENT_ROUTE,
     Companion_COMPONENT_ROUTE,
-    Personal_Account_ROUTE
+    Personal_Account_ROUTE,
+    AplikasiMitra_COMPONENT_ROUTE
 } from "./route-constants";
 
 
@@ -64,20 +66,20 @@ function App() {
                 return console.log("登入成功_me");
             })
             .catch((error) => {
-                if (location.pathname == "/Login") {
-                    console.log("调用初始化函数");
+                if (location.pathname === "/Login") {
+                } else {
                     dispatch(logOut());
+                    Navigate(Login_COMPONENT_ROUTE);
                 }
-                Navigate(Login_COMPONENT_ROUTE);
                 console.log("未登入_me", error);
             });
     }
 
     useEffect(() => {
-        if (location.pathname !== "/Register") {
-            fetchMe();
-        }
-    }, []);
+        // if (location.pathname !== "/Register") {
+        fetchMe();
+        // }
+    }, [location.pathname]);
 
     return (
         <div>
@@ -109,6 +111,9 @@ function App() {
                     />
                     <Route path={`${Personal_Account_ROUTE}`}
                         element={<PersonalAccount />}
+                    />
+                    <Route path={`${AplikasiMitra_COMPONENT_ROUTE}`}
+                        element={<AplikasiMitra />}
                     />
                 </Routes>
                 <div style={{ marginBottom: '100px' }} />
