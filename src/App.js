@@ -76,9 +76,9 @@ function App() {
     }
 
     useEffect(() => {
-        // if (location.pathname !== "/Register") {
-        fetchMe();
-        // }
+        if (location.pathname !== "/Register") {
+            fetchMe();
+        }
     }, [location.pathname]);
 
     return (

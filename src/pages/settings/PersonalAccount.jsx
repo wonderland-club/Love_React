@@ -10,21 +10,19 @@ import { GetUserName } from "../../redux/action";
 import { useSelector, useDispatch } from "react-redux";
 import { AddCompanion_COMPONENT_ROUTE } from "../../route-constants";
 import { useNavigate, useLocation } from "react-router-dom";
-
+import OverallCentered from "../../components/Typesetting_components/Overall_centered";
 const settingList = [
   { title: "伴侣关系", list: ["添加伴侣", "查看申请"] },
   { title: "密码", list: ["修改密码", "找回密码"] },
 ];
 export default function PersonalAccount() {
   return (
-    <>
-      <Container maxWidth="sm">
-        <>
-          <Box sx={{ textAlign: "center" }}>👤个人设置 </Box>
-          <PinnedSubheaderList />
-        </>
-      </Container>
-    </>
+    <OverallCentered>
+      <>
+        <Box sx={{ textAlign: "center", mb: 3 }}>👤个人设置 </Box>
+        <PinnedSubheaderList />
+      </>
+    </OverallCentered>
   );
 }
 
@@ -36,8 +34,10 @@ function PinnedSubheaderList() {
   function Add_a_partner() {
     Navigate(AddCompanion_COMPONENT_ROUTE);
   }
+
   // 查看申请
   function View_Application() {}
+
   // 修改密码
   function Change_password() {}
 
@@ -66,6 +66,7 @@ function PinnedSubheaderList() {
         break;
     }
   }
+
   return (
     <List
       sx={{
