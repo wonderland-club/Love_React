@@ -1,9 +1,10 @@
+import OverallCentered from "../../components/Typesetting_components/Overall_centered";
 
 const LoveCourse = () => {
   return (
-    <div>
-      恋爱历程
-    </div>
+    <>
+      <OverallCentered>恋爱历程</OverallCentered>
+    </>
   );
 };
 

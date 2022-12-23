@@ -8,7 +8,10 @@ import ListSubheader from "@mui/material/ListSubheader";
 import Button from "@mui/material/Button";
 import { GetUserName } from "../../redux/action";
 import { useSelector, useDispatch } from "react-redux";
-import { AddCompanion_COMPONENT_ROUTE } from "../../route-constants";
+import {
+  AddCompanion_COMPONENT_ROUTE,
+  AplikasiMitra_COMPONENT_ROUTE,
+} from "../../route-constants";
 import { useNavigate, useLocation } from "react-router-dom";
 import OverallCentered from "../../components/Typesetting_components/Overall_centered";
 const settingList = [
@@ -36,7 +39,9 @@ function PinnedSubheaderList() {
   }
 
   // 查看申请
-  function View_Application() {}
+  function View_Application() {
+    Navigate(AplikasiMitra_COMPONENT_ROUTE);
+  }
 
   // 修改密码
   function Change_password() {}
@@ -54,7 +59,7 @@ function PinnedSubheaderList() {
         break;
       // 查看申请
       case settingList[0]["list"][1]:
-        View_Application();
+        View_Application(AplikasiMitra_COMPONENT_ROUTE);
         break;
       // 修改密码
       case settingList[1]["list"][0]:
