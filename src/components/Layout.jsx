@@ -295,7 +295,7 @@ const BottomAppBar = () => {
           sx={h80}
         />
         <BottomNavigationAction
-          label="恋爱"
+          label="Home"
           value="Companion"
           icon={<FavoriteIcon />}
           onClick={() => {

@@ -58,8 +58,9 @@ const ApplicationMap = (props) => {
       {listDATA.map((item, index) => {
         return (
           <Box key={index}>
-            <div>{item["applicant_id"]}</div>
-            <div>{item["user_id"]}</div>
+            <div>{item["user"]["email"]}</div>
+            <div>{item["user"]["userName"]}</div>
+            <div>{item["user"]["gender"]}</div>
           </Box>
         );
       })}
