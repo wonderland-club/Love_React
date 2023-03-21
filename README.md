@@ -1,5 +1,13 @@
 # LOVE 恋爱小记
 
+GitHub 开源：
+
+前端：https://github.com/wonderland-Love/Love_React
+
+后端：	https://github.com/wonderland-Love/Love_SpringBoot
+
+数据库：https://github.com/wonderland-Love/Love_MySQL
+
 ## 最新功能 ! 加入灯光场景系统
 
 - 需求一：在卧室里，躺着玩手机，有睡意，不想下床去关灯，在身边的任何联网终端上都可以操控照明物开关
